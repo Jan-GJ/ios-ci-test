@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Address: Hashable, Codable,  Identifiable{
+struct Address: Hashable, Codable, Identifiable{
     var id: Int
     var city: String    
     var postcode: String

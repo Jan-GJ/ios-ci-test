@@ -28,11 +28,3 @@ struct FriendsList: View {
 
     }
 }
-
-#Preview("FriendList") {
-    let friends: [Friend] = [
-        Friend(id: 0, firstname: "Max", lastname: "Musterman"),
-        Friend(id: 1, firstname: "Maya", lastname: "Musterfrau")
-    ]
-   return FriendsList(friends: friends)
-}
