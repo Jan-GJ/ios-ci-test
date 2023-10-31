@@ -23,7 +23,7 @@ jobs:
     
       - name: Checkout code
         uses: actions/checkout@v3
-
+        
       - name: Start Backend
         run: |
           cd network_app/backend
@@ -31,6 +31,11 @@ jobs:
           npm run migrate 
           npm start &
 
+      - name: Force Xcode15
+        run: sudo xcode-select -switch /Application/Xcode_15.app
+
+      - name: List sims
+        run: xcrun instruments -s
      # - name: Build iOS App
      #   run: |
     #      cd network_app/Friends
