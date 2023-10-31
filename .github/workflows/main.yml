@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: ikalnytskyi/action-setup-postgres@v4
         with:
-          username: ${{ secrets.DB_USER }}
-          password: ${{ secrets.DB_PASSWORD }}
+          username: friends_db_user
+          password: SzhaUgWdzjlrVOpScJCGZrfNsUvhVv2d
           database: friends_db
           port: 34837
         id: postgres
