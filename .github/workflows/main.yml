@@ -34,9 +34,7 @@ jobs:
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest-stable
-      
-      - name: List sims
-        run: xcrun instruments -s
+    
      # - name: Build iOS App
      #   run: |
     #      cd network_app/Friends
