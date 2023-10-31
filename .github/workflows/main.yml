@@ -10,7 +10,7 @@ on:
 
 jobs:
   build_and_test:
-    runs-on: macos-13-arm64
+    runs-on: macos-13
     
     steps:
       - name: Show xcode versions
