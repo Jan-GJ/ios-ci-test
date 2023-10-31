@@ -2,7 +2,7 @@ import { inject, lifeCycleObserver, LifeCycleObserver } from '@loopback/core';
 import { juggler } from '@loopback/repository';
 
 const config = {
-	name: 'db',
+	name: 'friends_db',
 	connector: 'postgresql',
 	url: 'postgres://friends_db_user:SzhaUgWdzjlrVOpScJCGZrfNsUvhVv2d@localhost:5432/friends_db',
 };
