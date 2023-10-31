@@ -1,10 +1,10 @@
-import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
-import {juggler} from '@loopback/repository';
+import { inject, lifeCycleObserver, LifeCycleObserver } from '@loopback/core';
+import { juggler } from '@loopback/repository';
 
 const config = {
-  name: 'db',
-  connector: 'postgresql',
-  url: 'postgres://friends_db_user:SzhaUgWdzjlrVOpScJCGZrfNsUvhVv2d@dpg-cjsq1rj6fquc73bjohpg-a.frankfurt-postgres.render.com/friends_db?ssl=true',
+	name: 'db',
+	connector: 'postgresql',
+	url: 'postgres://friends_db_user:SzhaUgWdzjlrVOpScJCGZrfNsUvhVv2d@localhost:5432/friends_db',
 };
 
 // Observe application's life cycle to disconnect the datasource when
@@ -13,14 +13,14 @@ const config = {
 // Learn more at https://loopback.io/doc/en/lb4/Life-cycle.html
 @lifeCycleObserver('datasource')
 export class DbDataSource extends juggler.DataSource
-  implements LifeCycleObserver {
-  static dataSourceName = 'db';
-  static readonly defaultConfig = config;
+	implements LifeCycleObserver {
+	static dataSourceName = 'db';
+	static readonly defaultConfig = config;
 
-  constructor(
-    @inject('datasources.config.db', {optional: true})
-    dsConfig: object = config,
-  ) {
-    super(dsConfig);
-  }
+	constructor(
+		@inject('datasources.config.db', { optional: true })
+		dsConfig: object = config,
+	) {
+		super(dsConfig);
+	}
 }
