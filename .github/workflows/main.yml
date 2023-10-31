@@ -26,10 +26,10 @@ jobs:
 
       - name: Start Backend
         run: |
-          cd backend
+          cd network_app/backend
           npm install
-          # npm migrate + insert test data
-          npm start &
+          npm migrate 
+          npm start
 
       - name: Build iOS App
         run: |
