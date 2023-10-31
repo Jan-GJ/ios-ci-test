@@ -13,12 +13,13 @@ jobs:
     runs-on: macos-latest
     
     steps:
+      - name: Setup postgresDB
       - uses: ikalnytskyi/action-setup-postgres@v4
         with:
           username: friends_db_user
           password: SzhaUgWdzjlrVOpScJCGZrfNsUvhVv2d
           database: friends_db
-          port: 34837
+          port: 5432
         id: postgres
     
       - name: Checkout code
