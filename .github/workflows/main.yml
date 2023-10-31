@@ -1,0 +1,53 @@
+name: Backend and iOS Tests
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build_and_test:
+    runs-on: macos-latest
+    
+    services:
+      postgres:
+        image: postgres
+
+        env:
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          POSTGRES_USER: ${{ secrets.DB_USERNAME }}
+          POSTGRES_DB: postgres
+
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Start Backend
+        run: |
+          cd backend
+          npm install
+          # npm migrate + insert test data
+          npm start &
+
+      - name: Build iOS App
+        run: |
+          cd Frontend
+           xcodebuild -project frontend.xcodeproj -scheme frontend build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+
+      - name: Run Xcode Tests
+        run: |
+          cd Frontend
+          # doesnt work
+           xcodebuild -project frontend.xcodeproj -scheme frontend test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
