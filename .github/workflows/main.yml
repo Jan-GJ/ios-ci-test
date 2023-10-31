@@ -9,35 +9,18 @@ on:
       - main
 
 jobs:
-  postgresDB:
-    # Containers must run in Linux based operating systems
-    runs-on: ubuntu-latest
-    # Docker Hub image that `container-job` executes in
-    container: node:10.18-jessie
-
-    # Service containers to run with `container-job`
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          POSTGRES_USER: ${{ secrets.DB_USERNAME }}
-          POSTGRES_DB: friends_db
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
   build_and_test:
     runs-on: macos-latest
     
-
     steps:
+      - uses: ikalnytskyi/action-setup-postgres@v4
+        with:
+          username: ${{ secrets.DB_USER }}
+          password: ${{ secrets.DB_PASSWORD }}
+          database: friends_db
+          port: 34837
+        id: postgres
+    
       - name: Checkout code
         uses: actions/checkout@v3
 
