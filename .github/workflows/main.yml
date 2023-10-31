@@ -18,7 +18,7 @@ jobs:
           username: friends_db_user
           password: SzhaUgWdzjlrVOpScJCGZrfNsUvhVv2d
           database: friends_db
-          port: 34837
+          port: 5432
         id: postgres
     
       - name: Checkout code
@@ -29,15 +29,15 @@ jobs:
           cd network_app/backend
           npm install
           npm run migrate 
-          npm start
+          npm start &
 
       - name: Build iOS App
         run: |
-          cd Frontend
-           xcodebuild -project frontend.xcodeproj -scheme frontend build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+          cd network_app/Friends
+           xcodebuild -project Friends.xcodeproj -scheme Friends build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
       - name: Run Xcode Tests
         run: |
-          cd Frontend
+          cd network_app/Friends
           # doesnt work
-           xcodebuild -project frontend.xcodeproj -scheme frontend test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+           xcodebuild -project Friends.xcodeproj -scheme Friends test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
