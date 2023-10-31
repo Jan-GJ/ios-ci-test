@@ -32,7 +32,7 @@ jobs:
           npm start &
 
       - name: Force Xcode15
-        run: sudo xcode-select -switch /Application/Xcode_15.app
+        run: sudo xcode-select -switch /Applications/Xcode_15.app
 
       - name: List sims
         run: xcrun instruments -s
