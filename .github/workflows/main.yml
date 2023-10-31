@@ -13,6 +13,8 @@ jobs:
     runs-on: macos-latest
     
     steps:
+      - name: Show xcode versions
+        run: ls /Applications/
       - uses: ikalnytskyi/action-setup-postgres@v4
         with:
           username: friends_db_user
