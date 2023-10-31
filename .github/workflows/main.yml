@@ -29,7 +29,7 @@ jobs:
           cd network_app/backend
           npm install
           npm run migrate 
-          npm start
+          npm start &
 
       - name: Build iOS App
         run: |
