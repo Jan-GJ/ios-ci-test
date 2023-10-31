@@ -39,10 +39,3 @@ struct FriendDetails: View {
         }
     }
 }
-
-#Preview("FriendDetails") {
-    FriendDetails(friend: Friend(id: 0, firstname: "Max", lastname: "Mustermann",addresses: [
-    Address(id: 0, city: "Musterstadt0", postcode: "1234", street: "Musterstraße0", number: "0", friendId: 0),
-    Address(id: 1, city: "Musterstadt1", postcode: "2345", street: "Musterstraße1", number: "1", friendId: 1)
-    ]))
-}

@@ -23,8 +23,3 @@ struct ContentView: View {
         
     }
 }
-
-
-#Preview("Main Content") {
-    ContentView()
-}

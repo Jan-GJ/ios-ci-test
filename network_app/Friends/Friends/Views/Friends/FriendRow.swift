@@ -17,9 +17,3 @@ struct FriendRow: View {
         }
     }
 }
-
-#Preview("FriendRow") {
-    let friend = Friend(id: 0, firstname: "Max", lastname: "Mustermann")
-    return FriendRow(friend: friend)
-        .padding()
-}
